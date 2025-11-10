@@ -1,39 +1,29 @@
 server:
   port: 2333
-  address: 0.0.0.0
 
 lavalink:
   server:
     password: "youshallnotpass"
     sources:
-      youtube: true
-      bandcamp: true
-      soundcloud: true
-      twitch: true
-      vimeo: true
-      http: true
-    bufferDurationMs: 400
-    youtubePlaylistLoadLimit: 6
-    playerUpdateInterval: 5
-    youtubeSearchEnabled: true
-    soundcloudSearchEnabled: true
-    gc-warnings: true
+      youtube: false   # keep builtin YT disabled
 
-metrics:
-  prometheus:
+plugins:
+  youtube:
+    enabled: true
+    allowSearch: true
+    allowDirectVideoIds: true
+    allowDirectPlaylistIds: true
+    # Try a robust client mix. The order is a preference hint:
+    clients:
+      - WEB
+      - MUSIC
+      - ANDROID
+      - TVHTML5EMBEDDED
+      - WEBEMBEDDED
+    remoteCipher:
+      url: "http://localhost:8001"
+
+
+  # If you haven't actually added the lavasrc jar, disable it to reduce noise:
+  lavasrc:
     enabled: false
-    endpoint: /metrics
-
-sentry:
-  dsn: ""
-  environment: ""
-
-logging:
-  file:
-    max-history: 30
-    max-size: 1GB
-  path: ./logs/
-
-  level:
-    root: INFO
-    lavalink: INFO

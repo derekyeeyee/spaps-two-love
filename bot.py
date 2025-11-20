@@ -8,6 +8,8 @@ from discord.ext import commands
 import wavelink
 import logging
 
+# ---------- Logging ----------
+
 logging.basicConfig(
     level=logging.DEBUG,
     format="%(asctime)s:%(levelname)s:%(name)s: %(message)s",
@@ -204,13 +206,9 @@ class Music(commands.Cog):
 async def twolove(ctx):
     await ctx.send("2 LØVE 2 LØVE")
 
-
-@bot.command()
-async def gog(ctx):
-    await ctx.send("gog shut the fuck up")
-
-
 # ---------- Add Cog + Run ----------
+
+
 async def main():
     await bot.add_cog(Music(bot))
     await bot.start(TOKEN)
